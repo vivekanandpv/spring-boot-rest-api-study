@@ -4,6 +4,8 @@ import dev.vivekanand.massmutualspringday2.dtos.ProductCreateDto;
 import dev.vivekanand.massmutualspringday2.dtos.ProductDto;
 import dev.vivekanand.massmutualspringday2.dtos.ProductUpdateDto;
 import dev.vivekanand.massmutualspringday2.services.ProductService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +16,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("api/v1/products")
+@Tag(name = "Product API", description = "A RESTful API for products")
 public class ProductApi {
     private final ProductService productService;
 
@@ -22,6 +25,10 @@ public class ProductApi {
     }
 
     @GetMapping
+    @Operation(
+            summary = "An endpoint to get all products",
+            description = "some description for GET all"
+    )
     public ResponseEntity<List<ProductDto>> getAll() {
 
         return ResponseEntity.ok(productService.getAll());
