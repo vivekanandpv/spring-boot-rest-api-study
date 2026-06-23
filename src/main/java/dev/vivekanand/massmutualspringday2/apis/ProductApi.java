@@ -17,6 +17,8 @@ import java.util.Map;
 @RestController
 @RequestMapping("api/v1/products")
 @Tag(name = "Product API", description = "A RESTful API for products")
+// Below is not a professional CORS approach, but for simple demo projects, you may consider this
+//@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:4200"}, methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS})
 public class ProductApi {
     private final ProductService productService;
 
