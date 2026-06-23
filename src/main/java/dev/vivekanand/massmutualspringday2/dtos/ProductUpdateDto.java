@@ -1,7 +1,15 @@
 package dev.vivekanand.massmutualspringday2.dtos;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 public class ProductUpdateDto {
+    @NotBlank
+    @Size(max = 200)
     private String description;
+
+    @NotBlank
+    @Size(min = 10, max = 250)
     private String storeInformation;
 
     public String getDescription() {
