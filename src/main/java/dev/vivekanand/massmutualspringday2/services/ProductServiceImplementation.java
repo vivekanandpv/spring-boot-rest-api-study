@@ -3,12 +3,19 @@ package dev.vivekanand.massmutualspringday2.services;
 import dev.vivekanand.massmutualspringday2.dtos.ProductCreateDto;
 import dev.vivekanand.massmutualspringday2.dtos.ProductDto;
 import dev.vivekanand.massmutualspringday2.dtos.ProductUpdateDto;
+import dev.vivekanand.massmutualspringday2.repositories.ProductRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class ProductServiceImplementation implements ProductService {
+    private final ProductRepository productRepository;
+
+    public ProductServiceImplementation(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
+
     @Override
     public List<ProductDto> getAll() {
         return List.of();
