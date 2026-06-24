@@ -8,6 +8,7 @@ import dev.vivekanand.massmutualspringday2.exceptions.ResourceNotFoundException;
 import dev.vivekanand.massmutualspringday2.mappers.ProductMapper;
 import dev.vivekanand.massmutualspringday2.repositories.ProductRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -21,9 +22,20 @@ public class ProductServiceImplementation implements ProductService {
         this.productMapper = productMapper;
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<ProductDto> getAll() {
-        return productMapper.toDtoList(productRepository.findAll());
+        return productMapper.toDtoList(
+                productRepository.findAll() //  all products without filtration
+
+//                productRepository.findAll()
+//                        .stream().filter(p -> p.getName().startsWith("Laptop"))
+//                        .toList()   // stream api approach
+
+                // productRepository.findProductByNameStartingWith("Laptop")   //  automatic conventional query method
+                // productRepository.foo("Laptop") // JPQL query
+                // productRepository.bar("Laptop") // native SQL query
+        );
     }
 
     @Override
@@ -31,6 +43,7 @@ public class ProductServiceImplementation implements ProductService {
         return productMapper.toDto(getEntityById(id));
     }
 
+    @Transactional
     @Override
     public ProductDto create(ProductCreateDto dto) {
         Product product = productMapper.toEntity(dto);
@@ -40,6 +53,7 @@ public class ProductServiceImplementation implements ProductService {
         // return productMapper.toDto(productRepository.saveAndFlush(productMapper.toEntity(dto)));
     }
 
+    @Transactional
     @Override
     public ProductDto update(long id, ProductUpdateDto dto) {
         Product productDb = getEntityById(id);
@@ -48,6 +62,7 @@ public class ProductServiceImplementation implements ProductService {
         return productMapper.toDto(productSaved);
     }
 
+    @Transactional
     @Override
     public void deleteById(long id) {
         productRepository.delete(getEntityById(id));
