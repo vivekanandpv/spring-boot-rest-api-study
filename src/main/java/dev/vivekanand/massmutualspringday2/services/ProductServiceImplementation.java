@@ -3,6 +3,9 @@ package dev.vivekanand.massmutualspringday2.services;
 import dev.vivekanand.massmutualspringday2.dtos.ProductCreateDto;
 import dev.vivekanand.massmutualspringday2.dtos.ProductDto;
 import dev.vivekanand.massmutualspringday2.dtos.ProductUpdateDto;
+import dev.vivekanand.massmutualspringday2.entities.Product;
+import dev.vivekanand.massmutualspringday2.exceptions.ResourceNotFoundException;
+import dev.vivekanand.massmutualspringday2.mappers.ProductMapper;
 import dev.vivekanand.massmutualspringday2.repositories.ProductRepository;
 import org.springframework.stereotype.Service;
 
@@ -11,33 +14,47 @@ import java.util.List;
 @Service
 public class ProductServiceImplementation implements ProductService {
     private final ProductRepository productRepository;
+    private final ProductMapper productMapper;
 
-    public ProductServiceImplementation(ProductRepository productRepository) {
+    public ProductServiceImplementation(ProductRepository productRepository, ProductMapper productMapper) {
         this.productRepository = productRepository;
+        this.productMapper = productMapper;
     }
 
     @Override
     public List<ProductDto> getAll() {
-        return List.of();
+        return productMapper.toDtoList(productRepository.findAll());
     }
 
     @Override
     public ProductDto getById(long id) {
-        return null;
+        return productMapper.toDto(getEntityById(id));
     }
 
     @Override
     public ProductDto create(ProductCreateDto dto) {
-        return null;
+        Product product = productMapper.toEntity(dto);
+        Product productSaved = productRepository.saveAndFlush(product);
+        return productMapper.toDto(productSaved);
+        //  shorter version
+        // return productMapper.toDto(productRepository.saveAndFlush(productMapper.toEntity(dto)));
     }
 
     @Override
     public ProductDto update(long id, ProductUpdateDto dto) {
-        return null;
+        Product productDb = getEntityById(id);
+        productMapper.updateEntity(dto, productDb);
+        Product productSaved = productRepository.saveAndFlush(productDb);
+        return productMapper.toDto(productSaved);
     }
 
     @Override
     public void deleteById(long id) {
+        productRepository.delete(getEntityById(id));
+    }
 
+    private Product getEntityById(long id) {
+        return productRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Product not found: " + id));
     }
 }
