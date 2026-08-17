@@ -1,26 +1,24 @@
-package dev.vivekanand.massmutualspringday2.dtos;
+package dev.vivekanand.springbootrestapistudy.entities;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
+import jakarta.persistence.*;
 
-public class ProductCreateDto {
-    @NotBlank
-    @Size(min = 3, max = 100)
+@Entity
+public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
-
-    @NotBlank
-    @Size(max = 200)
     private String description;
-
-    @NotBlank
-    @Pattern(regexp = "^[A-Z]{5}[0-9]{5}$")
     private String sku;
-
-    @NotBlank
-    @Size(min = 10, max = 250)
     private String storeInformation;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;

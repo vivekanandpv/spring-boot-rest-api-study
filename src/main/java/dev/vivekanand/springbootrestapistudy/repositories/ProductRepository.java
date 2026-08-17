@@ -1,6 +1,6 @@
-package dev.vivekanand.massmutualspringday2.repositories;
+package dev.vivekanand.springbootrestapistudy.repositories;
 
-import dev.vivekanand.massmutualspringday2.entities.Product;
+import dev.vivekanand.springbootrestapistudy.entities.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
