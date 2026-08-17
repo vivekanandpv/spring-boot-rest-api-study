@@ -1,10 +1,19 @@
-package dev.vivekanand.massmutualspringday2.dtos;
+package dev.vivekanand.springbootrestapistudy.dtos;
 
-public class ProductCreateDto {
+public class ProductDto {
+    private Long id;
     private String name;
     private String description;
     private String sku;
     private String storeInformation;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
