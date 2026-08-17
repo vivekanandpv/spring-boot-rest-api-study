@@ -1,4 +1,4 @@
-package dev.vivekanand.massmutualspringday2.entities;
+package dev.vivekanand.springbootrestapistudy.entities;
 
 import jakarta.persistence.*;
 

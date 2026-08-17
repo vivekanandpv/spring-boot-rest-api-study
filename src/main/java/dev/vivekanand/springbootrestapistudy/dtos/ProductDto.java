@@ -1,4 +1,4 @@
-package dev.vivekanand.massmutualspringday2.dtos;
+package dev.vivekanand.springbootrestapistudy.dtos;
 
 public class ProductDto {
     private Long id;

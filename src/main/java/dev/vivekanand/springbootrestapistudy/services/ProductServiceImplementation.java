@@ -1,12 +1,12 @@
-package dev.vivekanand.massmutualspringday2.services;
+package dev.vivekanand.springbootrestapistudy.services;
 
-import dev.vivekanand.massmutualspringday2.dtos.ProductCreateDto;
-import dev.vivekanand.massmutualspringday2.dtos.ProductDto;
-import dev.vivekanand.massmutualspringday2.dtos.ProductUpdateDto;
-import dev.vivekanand.massmutualspringday2.entities.Product;
-import dev.vivekanand.massmutualspringday2.exceptions.ResourceNotFoundException;
-import dev.vivekanand.massmutualspringday2.mappers.ProductMapper;
-import dev.vivekanand.massmutualspringday2.repositories.ProductRepository;
+import dev.vivekanand.springbootrestapistudy.dtos.ProductCreateDto;
+import dev.vivekanand.springbootrestapistudy.dtos.ProductDto;
+import dev.vivekanand.springbootrestapistudy.dtos.ProductUpdateDto;
+import dev.vivekanand.springbootrestapistudy.entities.Product;
+import dev.vivekanand.springbootrestapistudy.exceptions.ResourceNotFoundException;
+import dev.vivekanand.springbootrestapistudy.mappers.ProductMapper;
+import dev.vivekanand.springbootrestapistudy.repositories.ProductRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
