@@ -1,4 +1,4 @@
-package dev.vivekanand.massmutualspringday2.exceptions;
+package dev.vivekanand.springbootrestapistudy.exceptions;
 
 public class DomainException extends RuntimeException {
     public DomainException(String message) {
