@@ -1,8 +1,8 @@
-package dev.vivekanand.massmutualspringday2.apis;
+package dev.vivekanand.springbootrestapistudy.apis;
 
 
-import dev.vivekanand.massmutualspringday2.exceptions.DomainException;
-import dev.vivekanand.massmutualspringday2.exceptions.ResourceNotFoundException;
+import dev.vivekanand.springbootrestapistudy.exceptions.DomainException;
+import dev.vivekanand.springbootrestapistudy.exceptions.ResourceNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
