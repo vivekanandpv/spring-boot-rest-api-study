@@ -1,9 +1,9 @@
-package dev.vivekanand.massmutualspringday2.apis;
+package dev.vivekanand.springbootrestapistudy.apis;
 
-import dev.vivekanand.massmutualspringday2.dtos.ProductCreateDto;
-import dev.vivekanand.massmutualspringday2.dtos.ProductDto;
-import dev.vivekanand.massmutualspringday2.dtos.ProductUpdateDto;
-import dev.vivekanand.massmutualspringday2.services.ProductService;
+import dev.vivekanand.springbootrestapistudy.dtos.ProductCreateDto;
+import dev.vivekanand.springbootrestapistudy.dtos.ProductDto;
+import dev.vivekanand.springbootrestapistudy.dtos.ProductUpdateDto;
+import dev.vivekanand.springbootrestapistudy.services.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
