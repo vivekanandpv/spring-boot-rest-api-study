@@ -1,4 +1,4 @@
-package dev.vivekanand.massmutualspringday2.dtos;
+package dev.vivekanand.springbootrestapistudy.dtos;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
