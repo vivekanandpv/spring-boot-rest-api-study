@@ -1,8 +1,8 @@
-package dev.vivekanand.massmutualspringday2.services;
+package dev.vivekanand.springbootrestapistudy.services;
 
-import dev.vivekanand.massmutualspringday2.dtos.ProductCreateDto;
-import dev.vivekanand.massmutualspringday2.dtos.ProductDto;
-import dev.vivekanand.massmutualspringday2.dtos.ProductUpdateDto;
+import dev.vivekanand.springbootrestapistudy.dtos.ProductCreateDto;
+import dev.vivekanand.springbootrestapistudy.dtos.ProductDto;
+import dev.vivekanand.springbootrestapistudy.dtos.ProductUpdateDto;
 
 import java.util.List;
 
