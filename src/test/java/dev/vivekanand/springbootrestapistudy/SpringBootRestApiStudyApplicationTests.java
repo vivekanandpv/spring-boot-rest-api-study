@@ -1,10 +1,10 @@
-package dev.vivekanand.massmutualspringday2;
+package dev.vivekanand.springbootrestapistudy;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MassmutualSpringDay2ApplicationTests {
+class SpringBootRestApiStudyApplicationTests {
 
 	@Test
 	void contextLoads() {

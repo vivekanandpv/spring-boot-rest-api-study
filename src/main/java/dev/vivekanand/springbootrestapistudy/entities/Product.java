@@ -1,6 +1,14 @@
-package dev.vivekanand.massmutualspringday2.dtos;
+package dev.vivekanand.springbootrestapistudy.entities;
 
-public class ProductDto {
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
+public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String description;
