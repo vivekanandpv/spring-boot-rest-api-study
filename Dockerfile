@@ -21,6 +21,7 @@ WORKDIR /app
 RUN addgroup -S app && adduser -S -G app app
 
 COPY --from=build --chown=app:app /build/target/*.jar app.jar
+COPY --chown=app:app data ./data
 
 EXPOSE 8080
 
