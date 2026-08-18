@@ -10,3 +10,8 @@ spring:
     show-sql: false
     open-in-view: false
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health

@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 # Build and test the application with Maven; the dependency cache survives rebuilds.
-FROM maven:3.9-eclipse-temurin-17-alpine AS build
+FROM maven:3.9-eclipse-temurin-25-alpine AS build
 
 WORKDIR /build
 
@@ -14,7 +14,7 @@ RUN --mount=type=cache,target=/root/.m2 \
     mvn --batch-mode package
 
 # Run the packaged application from a smaller JRE-only image as an unprivileged user.
-FROM eclipse-temurin:17-jre-alpine AS runtime
+FROM eclipse-temurin:25-jre-alpine AS runtime
 
 WORKDIR /app
 
