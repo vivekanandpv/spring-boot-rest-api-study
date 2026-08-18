@@ -1,0 +1,58 @@
+# Create Docker Image
+docker image build --platform=linux/amd64,linux/arm64 -t sb-demo-app .
+
+# Login and set the project
+gcloud auth login
+gcloud config set project YOUR_PROJECT_ID
+
+# Enable required APIs
+gcloud services enable artifactregistry.googleapis.com run.googleapis.com
+
+# Create repository in your chosen region (e.g., us-west1, us-central1)
+gcloud artifacts repositories create my-docker-repo \
+    --repository-format=docker \
+    --location=us-central1 \
+    --description="Docker repository for Spring Boot apps"
+
+# Configure Docker to authenticate with GCP registry
+gcloud auth configure-docker us-central1-docker.pkg.dev
+
+# Tag your local image
+docker tag sb-demo-app:latest \
+    us-central1-docker.pkg.dev/YOUR_PROJECT_ID/my-docker-repo/spring-boot-app:v1
+
+# Push the image
+docker push us-central1-docker.pkg.dev/YOUR_PROJECT_ID/my-docker-repo/spring-boot-app:v1
+
+# Deploy the image to Cloud Run
+gcloud run deploy spring-boot-service \
+    --image=us-central1-docker.pkg.dev/YOUR_PROJECT_ID/my-docker-repo/spring-boot-app:v1 \
+    --region=us-central1 \
+    --platform=managed \
+    --allow-unauthenticated \
+    --memory=1Gi \
+    --cpu=1 \
+    --readiness-probe=httpGet.port=8080,httpGet.path=/actuator/health
+
+######
+The earlier deployment command will give you Service URL
+such as https://spring-boot-service-661389796950.us-central1.run.app
+Do not add port number in the URL.
+
+Products API:
+https://<SERVICE_URL>/api/v1/products
+
+Health Check:
+https://<SERVICE_URL>/actuator/health
+
+
+######
+To remove all the resources created by this deployment:
+
+# Remove the tagged remote image copy
+gcloud run services delete spring-boot-service --region=us-central1 --quiet
+
+# Remove the local base image
+gcloud artifacts repositories delete my-docker-repo --location=us-central1 --quiet
+
+
